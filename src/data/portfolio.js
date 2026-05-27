@@ -107,6 +107,17 @@ export const categories = [
     variant: 'paintings',
     image: asset('portfolio/easel-painting.jpg'),
     imagePosition: 'center top',
+    feature: {
+      eyebrow: { cn: '架上作品 / 竖版图像', en: 'Easel Work / Portrait Image' },
+      title: { cn: '竖版完整作品图', en: 'Full Portrait Work' },
+      description: {
+        cn: '完整保留竖向画面比例，作为架上作品页面的重点图像展示。',
+        en: 'A full portrait-format image held at its original vertical proportion for the easel painting page.',
+      },
+      image: asset('portfolio/easel-detail-vertical.jpg'),
+      imagePosition: 'center',
+      fit: 'contain',
+    },
   },
   {
     id: 'exhibitions',
@@ -120,6 +131,15 @@ export const categories = [
     },
     meta: { cn: '展览 / 现场 / 策展', en: 'Exhibition / Site / Curating' },
     variant: 'exhibitions',
+    document: {
+      eyebrow: { cn: '展览文件 / PDF', en: 'Exhibition File / PDF' },
+      title: { cn: 'Design 01', en: 'Design 01' },
+      description: {
+        cn: '展览相关 PDF 文件，可在页面中预览，也可以单独打开查看。',
+        en: 'An exhibition-related PDF file, available to preview in the page or open separately.',
+      },
+      src: asset('portfolio/exhibition-design-01.pdf'),
+    },
   },
   {
     id: 'sketches',
@@ -133,6 +153,9 @@ export const categories = [
     },
     meta: { cn: '素描 / 手稿 / 研究', en: 'Sketch / Draft / Study' },
     variant: 'sketches',
+    image: asset('portfolio/sketch-work.jpg'),
+    imagePosition: 'center',
+    imageScale: 1.06,
   },
 ]
 

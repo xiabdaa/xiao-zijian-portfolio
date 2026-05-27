@@ -182,12 +182,19 @@ function IntroGate() {
           <span className="intro-gate__pin intro-gate__pin--tr" />
           <span className="intro-gate__pin intro-gate__pin--bl" />
           <span className="intro-gate__pin intro-gate__pin--br" />
-          <h1>
-            Xiao Zijian.
-            <br />
-            Visual Artist & Curator
+          <h1 aria-label="Xiao Zijian. Visual Artist & Curator">
+            <span className="intro-gate__fan-text" aria-hidden="true" style={{ '--fan-delay': '240ms', '--fan-rotation': '-7deg' }}>
+              Xiao Zijian.
+            </span>
+            <span className="intro-gate__fan-text" aria-hidden="true" style={{ '--fan-delay': '360ms', '--fan-rotation': '5deg' }}>
+              Visual Artist & Curator
+            </span>
           </h1>
-          <p>2026—Future</p>
+          <p>
+            <span className="intro-gate__fan-text" style={{ '--fan-delay': '520ms', '--fan-rotation': '-3deg' }}>
+              2026—Future
+            </span>
+          </p>
         </div>
 
         <div className="intro-gate__scroll">Discover</div>
