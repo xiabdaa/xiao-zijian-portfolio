@@ -1,0 +1,36 @@
+import { ArrowUpRight } from 'lucide-react'
+import { useLanguage } from '../context/useLanguage.js'
+import TransitionLink from './TransitionLink.jsx'
+import VisualFrame from './VisualFrame.jsx'
+
+function CategoryCard({ category, compact = false }) {
+  const { text } = useLanguage()
+
+  return (
+    <article className={`category-card ${compact ? 'category-card--compact' : ''}`}>
+      <TransitionLink to={category.path} label={text(category.title)} className="category-card__media">
+        <VisualFrame
+          variant={category.variant}
+          index={category.number}
+          title={text(category.title)}
+          image={category.image}
+          imagePosition={category.imagePosition}
+          imageScale={category.imageScale}
+        />
+      </TransitionLink>
+      <div className="category-card__body">
+        <div className="category-card__meta">
+          <span>{category.number}</span>
+          <span>{text(category.meta)}</span>
+        </div>
+        <TransitionLink to={category.path} label={text(category.title)} className="category-card__title">
+          <span>{text(category.title)}</span>
+          <ArrowUpRight size={24} strokeWidth={1.4} aria-hidden="true" />
+        </TransitionLink>
+        <p>{text(category.description)}</p>
+      </div>
+    </article>
+  )
+}
+
+export default CategoryCard
