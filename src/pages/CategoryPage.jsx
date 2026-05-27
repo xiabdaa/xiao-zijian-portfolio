@@ -54,6 +54,27 @@ function CategoryPage({ categoryId }) {
         </section>
       ) : null}
 
+      {category.gallery ? (
+        <section className="category-gallery">
+          <div className="category-gallery__copy">
+            <p className="eyebrow">{text(category.gallery.eyebrow)}</p>
+            <h2>{text(category.gallery.title)}</h2>
+            <p>{text(category.gallery.description)}</p>
+          </div>
+          <div className="category-gallery__items">
+            {category.gallery.images.map((image, index) => (
+              <figure className="category-gallery__frame" key={image.src}>
+                <img src={image.src} alt="" />
+                <figcaption>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <span>{text(image.title)}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {category.document ? (
         <section className="category-document">
           <div className="category-document__copy">

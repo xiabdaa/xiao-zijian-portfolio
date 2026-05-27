@@ -120,6 +120,24 @@ export const categories = [
       imagePosition: 'center',
       fit: 'contain',
     },
+    gallery: {
+      eyebrow: { cn: '架上作品 / 完整图像', en: 'Easel Works / Full Images' },
+      title: { cn: '完整画面', en: 'Complete Frames' },
+      description: {
+        cn: '以下作品保留原始画面比例完整展示，不进行裁切。',
+        en: 'The following works preserve their full original image proportions without cropping.',
+      },
+      images: [
+        {
+          src: asset('portfolio/easel-work-red.jpg'),
+          title: { cn: '红色背景作品', en: 'Red Background Work' },
+        },
+        {
+          src: asset('portfolio/easel-work-green.jpg'),
+          title: { cn: '绿色背景作品', en: 'Green Background Work' },
+        },
+      ],
+    },
   },
   {
     id: 'exhibitions',
