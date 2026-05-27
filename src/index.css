@@ -778,17 +778,17 @@ main {
 }
 
 .scroll-parallax .visual-frame img {
-  top: -10%;
-  height: 120%;
+  top: -30%;
+  height: 160%;
   transform: translate3d(0, var(--scroll-media-y), 0)
     scale(calc(var(--visual-image-scale, 1) + var(--scroll-hover-scale)));
 }
 
 .scroll-parallax .visual-frame::before {
-  top: -10%;
-  bottom: -10%;
+  top: -30%;
+  bottom: -30%;
   transform: translate3d(0, var(--scroll-media-y), 0)
-    scale(calc(1.04 + var(--scroll-hover-scale)));
+    scale(calc(1.08 + var(--scroll-hover-scale)));
   transform-origin: center;
   transition: transform 360ms ease;
   will-change: transform;

@@ -7,7 +7,7 @@ import { useScrollParallax } from './useScrollParallax.js'
 function CategoryCard({ category, compact = false }) {
   const { text } = useLanguage()
   const parallaxRef = useScrollParallax({
-    distance: compact ? 20 : 34,
+    distance: compact ? 46 : 72,
     direction: category.number % 2 === 0 ? -1 : 1,
   })
 

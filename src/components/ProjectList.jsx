@@ -6,7 +6,7 @@ import { useScrollParallax } from './useScrollParallax.js'
 function ProjectRow({ project, index, variant }) {
   const { text } = useLanguage()
   const parallaxRef = useScrollParallax({
-    distance: 24,
+    distance: 48,
     direction: index % 2 === 0 ? 1 : -1,
   })
 

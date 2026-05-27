@@ -36,7 +36,7 @@ export function useScrollParallax({ distance = 32, direction = 1 } = {}) {
       const elementCenter = rect.top + rect.height / 2
       const range = viewportCenter + rect.height / 2
       const progress = clamp((elementCenter - viewportCenter) / range, -1, 1)
-      const mobileFactor = window.innerWidth < 720 ? 0.58 : 1
+      const mobileFactor = window.innerWidth < 720 ? 0.68 : 1
       const mediaY = progress * distance * direction * mobileFactor
       const copyY = progress * distance * -0.28 * direction * mobileFactor
 
