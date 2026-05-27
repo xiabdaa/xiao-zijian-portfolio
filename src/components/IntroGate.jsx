@@ -5,6 +5,7 @@ import { useLanguage } from '../context/useLanguage.js'
 import TransitionLink from './TransitionLink.jsx'
 
 const introVideo = `${import.meta.env.BASE_URL}intro/work-intro.mp4`
+const splashLetters = 'XIABDAA'.split('')
 
 function IntroGate() {
   const sectionRef = useRef(null)
@@ -198,6 +199,19 @@ function IntroGate() {
         </div>
 
         <div className="intro-gate__scroll">Discover</div>
+
+        <div className="intro-gate__loader" aria-hidden="true">
+          <div className="intro-gate__loader-word">
+            {splashLetters.map((letter, index) => (
+              <span key={`${letter}-${index}`} style={{ '--letter-index': index }}>
+                {letter}
+              </span>
+            ))}
+          </div>
+          <div className="intro-gate__loader-window">
+            <video src={introVideo} autoPlay muted loop playsInline preload="auto" controls={false} />
+          </div>
+        </div>
       </div>
     </section>
   )

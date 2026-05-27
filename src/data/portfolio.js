@@ -107,6 +107,8 @@ export const categories = [
     variant: 'paintings',
     image: asset('portfolio/easel-painting.jpg'),
     imagePosition: 'center top',
+    parallaxDistance: 28,
+    compactParallaxDistance: 20,
     feature: {
       eyebrow: { cn: '架上作品 / 竖版图像', en: 'Easel Work / Portrait Image' },
       title: { cn: '竖版完整作品图', en: 'Full Portrait Work' },
@@ -134,6 +136,8 @@ export const categories = [
     coverImage: asset('portfolio/exhibition-cover.svg'),
     coverImagePosition: 'center',
     coverImageScale: 1,
+    parallaxDistance: 28,
+    compactParallaxDistance: 20,
     document: {
       eyebrow: { cn: '展览文件 / PDF', en: 'Exhibition File / PDF' },
       title: { cn: 'Design 01', en: 'Design 01' },
