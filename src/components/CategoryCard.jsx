@@ -8,8 +8,8 @@ function CategoryCard({ category, compact = false }) {
   const { text } = useLanguage()
   const parallaxRef = useScrollParallax({
     distance: compact
-      ? (category.compactParallaxDistance ?? 46)
-      : (category.parallaxDistance ?? 72),
+      ? (category.compactParallaxDistance ?? 54)
+      : (category.parallaxDistance ?? 86),
     direction: -1,
   })
 

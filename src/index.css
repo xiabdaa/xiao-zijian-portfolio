@@ -30,6 +30,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@property --loader-window-w {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 2px;
+}
+
+@property --loader-window-h {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 2px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -335,14 +347,24 @@ main {
 }
 
 .intro-gate__loader {
+  --loader-window-w: 2px;
+  --loader-window-h: 2px;
   position: absolute;
   inset: 0;
   z-index: 20;
   overflow: hidden;
   pointer-events: none;
   background: #050505;
-  animation: intro-loader-exit 760ms ease forwards;
-  animation-delay: 3820ms;
+  mask:
+    linear-gradient(#000 0 0) center / var(--loader-window-w) var(--loader-window-h) no-repeat,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#000 0 0) center / var(--loader-window-w) var(--loader-window-h) no-repeat,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  animation: intro-loader-reveal 3200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 1120ms;
 }
 
 .intro-gate__loader-word {
@@ -365,36 +387,25 @@ main {
   transform: translateY(18px);
   animation:
     intro-letter-in 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards,
-    intro-letter-spread 1120ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    intro-letter-spread 1180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay:
     calc(80ms + var(--letter-index) * 58ms),
-    calc(820ms + var(--letter-index) * 36ms);
+    calc(760ms + var(--letter-index) * 34ms);
 }
 
 .intro-gate__loader-window {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(70vw, 940px);
-  height: min(48svh, 560px);
+  width: 2px;
+  height: 2px;
   overflow: hidden;
   border: 1px solid rgba(244, 242, 237, 0.78);
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.025);
+  opacity: 1;
+  transform: translate(-50%, -50%);
   transform-origin: center;
-  animation: intro-window-grow 2380ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: 1500ms;
-}
-
-.intro-gate__loader-window video {
-  position: absolute;
-  inset: auto;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100svh;
-  object-fit: cover;
-  transform: translate(-50%, -50%) scale(1.15);
+  animation: intro-window-outline 3200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 1120ms;
 }
 
 @keyframes intro-letter-in {
@@ -406,42 +417,49 @@ main {
 
 @keyframes intro-letter-spread {
   0% {
-    transform: translateX(0) translateY(0) rotate(0deg);
+    transform: translateX(0) translateY(0);
   }
 
   100% {
     opacity: 0;
-    transform: translateX(calc(18vw + var(--letter-index) * 4.2vw)) translateY(-1.2vw)
-      rotate(calc(-8deg + var(--letter-index) * 2.8deg));
+    transform: translateX(calc(20vw + var(--letter-index) * 4.6vw)) translateY(0);
   }
 }
 
-@keyframes intro-window-grow {
+@keyframes intro-loader-reveal {
   0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.025);
+    --loader-window-w: 2px;
+    --loader-window-h: 2px;
   }
 
-  18% {
-    opacity: 1;
-  }
-
-  54% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+  45% {
+    --loader-window-w: min(68vw, 920px);
+    --loader-window-h: min(46svh, 540px);
   }
 
   100% {
-    opacity: 1;
-    border-color: transparent;
-    transform: translate(-50%, -50%) scale(2.85);
+    visibility: hidden;
+    --loader-window-w: 170vw;
+    --loader-window-h: 170svh;
   }
 }
 
-@keyframes intro-loader-exit {
-  to {
-    visibility: hidden;
-    opacity: 0;
+@keyframes intro-window-outline {
+  0% {
+    width: 2px;
+    height: 2px;
+  }
+
+  45% {
+    width: min(68vw, 920px);
+    height: min(46svh, 540px);
+    border-color: rgba(244, 242, 237, 0.78);
+  }
+
+  100% {
+    width: 170vw;
+    height: 170svh;
+    border-color: transparent;
   }
 }
 
@@ -930,13 +948,13 @@ main {
 }
 
 .scroll-parallax .visual-frame--paintings img {
-  top: -12%;
-  height: 124%;
+  top: -17%;
+  height: 134%;
 }
 
 .scroll-parallax .visual-frame--exhibitions img {
-  top: -12%;
-  height: 124%;
+  top: -17%;
+  height: 134%;
 }
 
 .scroll-parallax .visual-frame::before {
@@ -950,13 +968,13 @@ main {
 }
 
 .scroll-parallax .visual-frame--paintings::before {
-  top: -12%;
-  bottom: -12%;
+  top: -17%;
+  bottom: -17%;
 }
 
 .scroll-parallax .visual-frame--exhibitions::before {
-  top: -12%;
-  bottom: -12%;
+  top: -17%;
+  bottom: -17%;
 }
 
 .visual-frame--contain img {

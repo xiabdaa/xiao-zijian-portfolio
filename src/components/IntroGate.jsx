@@ -208,9 +208,7 @@ function IntroGate() {
               </span>
             ))}
           </div>
-          <div className="intro-gate__loader-window">
-            <video src={introVideo} autoPlay muted loop playsInline preload="auto" controls={false} />
-          </div>
+          <div className="intro-gate__loader-window" />
         </div>
       </div>
     </section>
