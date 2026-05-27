@@ -20,7 +20,7 @@ function VisualFrame({
           alt=""
           style={{
             objectPosition: imagePosition,
-            transform: imageScale !== 1 ? `scale(${imageScale})` : undefined,
+            '--visual-image-scale': String(imageScale),
           }}
         />
       ) : null}

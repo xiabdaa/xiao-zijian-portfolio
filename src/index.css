@@ -639,6 +639,7 @@ main {
 .scroll-parallax {
   --scroll-media-y: 0px;
   --scroll-copy-y: 0px;
+  --scroll-hover-scale: 0;
 }
 
 .category-card {
@@ -649,14 +650,10 @@ main {
 .category-card__media {
   display: block;
   overflow: hidden;
-  transform: translate3d(0, var(--scroll-media-y), 0);
-  will-change: transform;
 }
 
 .category-card__body {
   padding-top: 18px;
-  transform: translate3d(0, var(--scroll-copy-y), 0);
-  will-change: transform;
 }
 
 .category-card__meta {
@@ -699,8 +696,8 @@ main {
   line-height: 1.55;
 }
 
-.category-card:hover .visual-frame {
-  transform: translateY(-4px) scale(1.012);
+.category-card:hover {
+  --scroll-hover-scale: 0.025;
 }
 
 .category-card:hover .category-card__title svg {
@@ -758,9 +755,7 @@ main {
   overflow: hidden;
   border: 1px solid rgba(17, 17, 15, 0.16);
   background: #c9c5bc;
-  transition:
-    transform 360ms ease,
-    filter 360ms ease;
+  transition: filter 360ms ease;
 }
 
 .visual-frame--wide {
@@ -774,7 +769,29 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(var(--visual-image-scale, 1));
   transform-origin: center;
+  transition:
+    filter 360ms ease,
+    transform 360ms ease;
+  will-change: transform;
+}
+
+.scroll-parallax .visual-frame img {
+  top: -10%;
+  height: 120%;
+  transform: translate3d(0, var(--scroll-media-y), 0)
+    scale(calc(var(--visual-image-scale, 1) + var(--scroll-hover-scale)));
+}
+
+.scroll-parallax .visual-frame::before {
+  top: -10%;
+  bottom: -10%;
+  transform: translate3d(0, var(--scroll-media-y), 0)
+    scale(calc(1.04 + var(--scroll-hover-scale)));
+  transform-origin: center;
+  transition: transform 360ms ease;
+  will-change: transform;
 }
 
 .visual-frame--contain img {
@@ -954,15 +971,11 @@ main {
   align-self: start;
   color: var(--muted);
   font-size: 12px;
-  transform: translate3d(0, var(--scroll-copy-y), 0);
-  will-change: transform;
 }
 
 .project-row__image {
   min-height: 178px;
   aspect-ratio: 5 / 4;
-  transform: translate3d(0, var(--scroll-media-y), 0);
-  will-change: transform;
 }
 
 .project-row__content {
@@ -970,8 +983,6 @@ main {
   grid-template-columns: minmax(220px, 0.62fr) minmax(240px, 0.38fr);
   gap: 28px;
   align-items: start;
-  transform: translate3d(0, var(--scroll-copy-y), 0);
-  will-change: transform;
 }
 
 .project-row__type {
@@ -1008,14 +1019,12 @@ main {
     color 180ms ease,
     background 180ms ease,
     transform 180ms ease;
-  transform: translate3d(0, var(--scroll-copy-y), 0);
-  will-change: transform;
 }
 
 .project-row:hover .project-row__button {
   color: var(--paper-soft);
   background: var(--ink);
-  transform: translate3d(2px, calc(var(--scroll-copy-y) - 2px), 0);
+  transform: translate(2px, -2px);
 }
 
 .about-page__grid {
