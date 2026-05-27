@@ -2,12 +2,20 @@ import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../context/useLanguage.js'
 import TransitionLink from './TransitionLink.jsx'
 import VisualFrame from './VisualFrame.jsx'
+import { useScrollParallax } from './useScrollParallax.js'
 
 function CategoryCard({ category, compact = false }) {
   const { text } = useLanguage()
+  const parallaxRef = useScrollParallax({
+    distance: compact ? 20 : 34,
+    direction: category.number % 2 === 0 ? -1 : 1,
+  })
 
   return (
-    <article className={`category-card ${compact ? 'category-card--compact' : ''}`}>
+    <article
+      ref={parallaxRef}
+      className={`category-card scroll-parallax ${compact ? 'category-card--compact' : ''}`}
+    >
       <TransitionLink to={category.path} label={text(category.title)} className="category-card__media">
         <VisualFrame
           variant={category.variant}

@@ -636,6 +636,11 @@ main {
   gap: 32px;
 }
 
+.scroll-parallax {
+  --scroll-media-y: 0px;
+  --scroll-copy-y: 0px;
+}
+
 .category-card {
   border-top: 1px solid var(--line);
   padding-top: 16px;
@@ -644,10 +649,14 @@ main {
 .category-card__media {
   display: block;
   overflow: hidden;
+  transform: translate3d(0, var(--scroll-media-y), 0);
+  will-change: transform;
 }
 
 .category-card__body {
   padding-top: 18px;
+  transform: translate3d(0, var(--scroll-copy-y), 0);
+  will-change: transform;
 }
 
 .category-card__meta {
@@ -945,11 +954,15 @@ main {
   align-self: start;
   color: var(--muted);
   font-size: 12px;
+  transform: translate3d(0, var(--scroll-copy-y), 0);
+  will-change: transform;
 }
 
 .project-row__image {
   min-height: 178px;
   aspect-ratio: 5 / 4;
+  transform: translate3d(0, var(--scroll-media-y), 0);
+  will-change: transform;
 }
 
 .project-row__content {
@@ -957,6 +970,8 @@ main {
   grid-template-columns: minmax(220px, 0.62fr) minmax(240px, 0.38fr);
   gap: 28px;
   align-items: start;
+  transform: translate3d(0, var(--scroll-copy-y), 0);
+  will-change: transform;
 }
 
 .project-row__type {
@@ -993,12 +1008,14 @@ main {
     color 180ms ease,
     background 180ms ease,
     transform 180ms ease;
+  transform: translate3d(0, var(--scroll-copy-y), 0);
+  will-change: transform;
 }
 
 .project-row:hover .project-row__button {
   color: var(--paper-soft);
   background: var(--ink);
-  transform: translate(2px, -2px);
+  transform: translate3d(2px, calc(var(--scroll-copy-y) - 2px), 0);
 }
 
 .about-page__grid {
