@@ -21,9 +21,9 @@ function CategoryCard({ category, compact = false }) {
           variant={category.variant}
           index={category.number}
           title={text(category.title)}
-          image={category.image}
-          imagePosition={category.imagePosition}
-          imageScale={category.imageScale}
+          image={category.coverImage ?? category.image}
+          imagePosition={category.coverImagePosition ?? category.imagePosition}
+          imageScale={category.coverImageScale ?? category.imageScale}
         />
       </TransitionLink>
       <div className="category-card__body">

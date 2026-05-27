@@ -818,6 +818,11 @@ main {
     scale(calc(var(--visual-image-scale, 1) + var(--scroll-hover-scale)));
 }
 
+.scroll-parallax .visual-frame--paintings img {
+  top: -10%;
+  height: 120%;
+}
+
 .scroll-parallax .visual-frame::before {
   top: -30%;
   bottom: -30%;
@@ -826,6 +831,11 @@ main {
   transform-origin: center;
   transition: transform 360ms ease;
   will-change: transform;
+}
+
+.scroll-parallax .visual-frame--paintings::before {
+  top: -10%;
+  bottom: -10%;
 }
 
 .visual-frame--contain img {

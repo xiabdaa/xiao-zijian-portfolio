@@ -131,6 +131,9 @@ export const categories = [
     },
     meta: { cn: '展览 / 现场 / 策展', en: 'Exhibition / Site / Curating' },
     variant: 'exhibitions',
+    coverImage: asset('portfolio/exhibition-cover.svg'),
+    coverImagePosition: 'center',
+    coverImageScale: 1,
     document: {
       eyebrow: { cn: '展览文件 / PDF', en: 'Exhibition File / PDF' },
       title: { cn: 'Design 01', en: 'Design 01' },
